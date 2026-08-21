@@ -1,0 +1,17 @@
+require("plugins.catppuccin")
+require("plugins.snacks")
+require("plugins.lualine")
+require("plugins.mini")
+require("plugins.flash")
+require("plugins.navigator")
+require("plugins.grug-far")
+
+require("plugins.treesitter")
+require("plugins.lsp")
+require("plugins.outline")
+require("plugins.conform")
+require("plugins.lint")
+require("plugins.blink")
+
+require("plugins.gitsigns")
+require("plugins.diffview")
