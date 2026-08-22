@@ -74,7 +74,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local picker = Snacks.picker
 
     map("gd", picker.lsp_definitions, "Goto Definitions")
-    map("gr", picker.lsp_references, "Goto References")
+    map("grr", picker.lsp_references, "Goto References")
     map("gD", picker.lsp_declarations, "Goto Declaration")
     map("gI", picker.lsp_implementations, "Goto Implementations")
     map("gt", picker.lsp_type_definitions, "Goto Type Definitions")
