@@ -9,8 +9,12 @@ MiniIcons.mock_nvim_web_devicons()
 -- ====================
 -- Mini Files
 -- ====================
-vim.keymap.set("n", "<leader>e", function()
-  vim.pack.add({ "https://github.com/nvim-mini/mini.files" })
+local miniFilesAlreadySetup = false
+local miniFilesSetup = function()
+  if miniFilesAlreadySetup then
+    return
+  end
+  miniFilesAlreadySetup = true
   require("mini.files").setup({
     content = {
       filter = function(fs_entry)
@@ -22,7 +26,10 @@ vim.keymap.set("n", "<leader>e", function()
       go_in = "L",
     },
   })
-
+end
+vim.keymap.set("n", "<leader>e", function()
+  vim.pack.add({ "https://github.com/nvim-mini/mini.files" })
+  miniFilesSetup()
   -- Toggle File explore
   if MiniFiles.close() == nil then
     MiniFiles.open(vim.api.nvim_buf_get_name(0))
