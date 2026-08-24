@@ -54,8 +54,8 @@ vim.schedule(function()
   local ensure_installed = vim.tbl_keys(servers or {})
   vim.list_extend(ensure_installed, {
     "stylua", -- Lua formatter
-    "oxfmt", -- JS/TS/Json/makdown/html/css formatter
-    "oxlint", -- JS/TS linter
+    "prettierd", -- JS/TS/Json/makdown/html/css formatter
+    "eslint_d", -- JS/TS linter
   })
 
   require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
