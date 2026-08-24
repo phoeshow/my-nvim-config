@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "CmdlineLeave" }, {
 -- close some window with 'q'
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("close_window_with_q", { clear = true }),
-  pattern = { "help", "checkhealth", "lspinfo", "qf" },
+  pattern = { "help", "checkhealth", "lspinfo", "qf", "startuptime" },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.schedule(function()

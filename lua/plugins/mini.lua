@@ -89,7 +89,7 @@ vim.api.nvim_create_autocmd("User", {
 -- ====================
 -- Mini Tabline
 -- ====================
-vim.api.nvim_create_autocmd("BufEnter", {
+vim.api.nvim_create_autocmd("BufReadPost", {
   once = true,
   callback = function()
     vim.pack.add({ "https://github.com/nvim-mini/mini.tabline" })
@@ -113,7 +113,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 -- ====================
 -- Mini clue
 -- ====================
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd("UIEnter", {
   once = true,
   callback = function()
     vim.pack.add({ "https://github.com/nvim-mini/mini.clue" })

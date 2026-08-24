@@ -65,7 +65,7 @@ require("snacks").setup({
   },
 })
 
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd("UIEnter", {
   callback = function()
     -- Create some toggle mappings
     Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
