@@ -13,6 +13,11 @@ vim.keymap.set("n", "<leader>w-", "<CMD>split<CR>", { desc = "Split window horiz
 vim.keymap.set("n", "<leader>wv", "<CMD>vsplit<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>w\\", "<CMD>vsplit<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>wd", "<c-w>c", { desc = "Delete window" })
+-- Resize window
+vim.keymap.set("n", "<C-UP>", "<CMD>resize +2<CR>", { desc = "Increase Window Height" })
+vim.keymap.set("n", "<C-Down>", "<CMD>resize -2<CR>", { desc = "Decrease Window Height" })
+vim.keymap.set("n", "<C-Left>", "<CMD>vertical resize -2<CR>", { desc = "Decrease Window Width" })
+vim.keymap.set("n", "<C-Right>", "<CMD>vertical resize +2<CR>", { desc = "Increase Window Width" })
 
 -- Move lines
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down", noremap = true, silent = true })
@@ -30,3 +35,11 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { silent = true, expr = tr
 -- Better indent
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
+
+-- Disable neovim lsp keybindings
+vim.keymap.del("n", "gra")
+vim.keymap.del("n", "grr")
+vim.keymap.del("n", "grn")
+vim.keymap.del("n", "gri")
+vim.keymap.del("n", "grt")
+vim.keymap.del("n", "grx")
