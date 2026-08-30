@@ -9,27 +9,20 @@ MiniIcons.mock_nvim_web_devicons()
 -- ====================
 -- Mini Files
 -- ====================
-local miniFilesAlreadySetup = false
-local miniFilesSetup = function()
-  if miniFilesAlreadySetup then
-    return
-  end
-  miniFilesAlreadySetup = true
-  require("mini.files").setup({
-    content = {
-      filter = function(fs_entry)
-        return not vim.startswith(fs_entry.name, ".")
-      end,
-    },
-    mappings = {
-      go_in_plus = "l",
-      go_in = "L",
-    },
-  })
-end
+vim.pack.add({ "https://github.com/nvim-mini/mini.files" })
+require("mini.files").setup({
+  content = {
+    filter = function(fs_entry)
+      return not vim.startswith(fs_entry.name, ".")
+    end,
+  },
+  mappings = {
+    go_in_plus = "l",
+    go_in = "L",
+  },
+})
+
 vim.keymap.set("n", "<leader>e", function()
-  vim.pack.add({ "https://github.com/nvim-mini/mini.files" })
-  miniFilesSetup()
   -- Toggle File explore
   if MiniFiles.close() == nil then
     MiniFiles.open(vim.api.nvim_buf_get_name(0))
@@ -86,6 +79,7 @@ vim.api.nvim_create_autocmd("User", {
     map_split(buf_id, "<C-v>", "belowright vertical")
   end,
 })
+
 vim.api.nvim_create_autocmd("User", {
   pattern = "MiniFilesActionRename",
   callback = function(event)
@@ -159,6 +153,9 @@ vim.api.nvim_create_autocmd("UIEnter", {
         { mode = "n", keys = "<leader>u", desc = "UI" },
         { mode = "n", keys = "<leader>s", desc = "Search" },
         { mode = "n", keys = "<leader>c", desc = "Code" },
+      },
+      window = {
+        delay = 250,
       },
     })
   end,
