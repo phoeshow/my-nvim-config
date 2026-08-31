@@ -3,7 +3,6 @@ require("plugins.snacks")
 require("plugins.lualine")
 require("plugins.mini")
 require("plugins.flash")
-require("plugins.navigator")
 require("plugins.grug-far")
 
 require("plugins.todo-comments")

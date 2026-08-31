@@ -12,14 +12,14 @@ require("catppuccin").setup({
       BlinkCmpSignatureHelp = { bg = colors.mantle },
       BlinkCmpSignatureHelpActiveParameter = { bg = colors.surface1, bold = true, italic = true },
       -- custom mini tabline
-      MiniTablineCurrent = { fg = colors.peach, bg = colors.mantle, style = { "bold", "italic" } },
+      MiniTablineCurrent = { fg = colors.mantle, bg = colors.peach, style = { "bold", "italic" } },
       MiniTablineFill = { bg = colors.base },
       MiniTablineHidden = { fg = colors.surface2, bg = colors.base },
-      MiniTablineModifiedCurrent = { fg = colors.peach, bg = colors.none, style = { "bold", "italic" } },
-      MiniTablineModifiedHidden = { fg = colors.peach, bg = colors.none },
-      MiniTablineModifiedVisible = { fg = colors.peach, bg = colors.none },
+      MiniTablineModifiedCurrent = { fg = colors.base, bg = colors.maroon, style = { "bold", "italic" } },
+      MiniTablineModifiedHidden = { fg = colors.maroon, bg = colors.none },
+      MiniTablineModifiedVisible = { fg = colors.maroon, bg = colors.none },
       MiniTablineTabpagesection = { fg = colors.surface1, bg = colors.base },
-      MiniTablineVisible = { fg = colors.subtext0, bg = colors.base },
+      MiniTablineVisible = { fg = colors.subtext1, bg = colors.base },
     }
   end,
   integrations = {
