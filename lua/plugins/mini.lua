@@ -27,7 +27,7 @@ vim.keymap.set("n", "<leader>e", function()
   if MiniFiles.close() == nil then
     MiniFiles.open(vim.api.nvim_buf_get_name(0))
   end
-end, { desc = "Open File Explore" })
+end, { desc = " Open File Explore" })
 
 -- Toggle hidden files
 local show_dotfiles = false
@@ -95,7 +95,11 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function()
     vim.pack.add({ "https://github.com/nvim-mini/mini.tabline" })
     require("mini.tabline").setup({
-      tabpage_section = "right",
+      format = function(buf_id, label)
+        local prefix = vim.api.nvim_get_current_buf() == buf_id and "▎" or "▏"
+        local suffix = vim.bo[buf_id].modified and "+ " or ""
+        return prefix .. MiniTabline.default_format(buf_id, label) .. suffix
+      end,
     })
   end,
 })
@@ -144,15 +148,15 @@ vim.api.nvim_create_autocmd("UIEnter", {
         miniclue.gen_clues.g(),
         miniclue.gen_clues.registers(),
         miniclue.gen_clues.z(),
-        { mode = "n", keys = "<leader>f", desc = "Find" },
-        { mode = "n", keys = "<leader>w", desc = "Window" },
-        { mode = "n", keys = "<leader>b", desc = "Buffers" },
-        { mode = "n", keys = "<leader>g", desc = "Git" },
-        { mode = "n", keys = "<leader>h", desc = "Git Hunk" },
-        { mode = "n", keys = "<leader>t", desc = "Toggle" },
-        { mode = "n", keys = "<leader>u", desc = "UI" },
-        { mode = "n", keys = "<leader>s", desc = "Search" },
-        { mode = "n", keys = "<leader>c", desc = "Code" },
+        { mode = "n", keys = "<leader>f", desc = " Find" },
+        { mode = "n", keys = "<leader>w", desc = " Window" },
+        { mode = "n", keys = "<leader>b", desc = " Buffers" },
+        { mode = "n", keys = "<leader>g", desc = " Git" },
+        { mode = "n", keys = "<leader>h", desc = " Git Hunk" },
+        { mode = "n", keys = "<leader>t", desc = " Toggle" },
+        { mode = "n", keys = "<leader>u", desc = " UI" },
+        { mode = "n", keys = "<leader>s", desc = "󰈞 Search" },
+        { mode = "n", keys = "<leader>c", desc = " Code" },
       },
       window = {
         delay = 250,
