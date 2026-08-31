@@ -160,24 +160,3 @@ vim.api.nvim_create_autocmd("UIEnter", {
     })
   end,
 })
-
--- ====================
--- Mini hipatterns
--- ====================
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  once = true,
-  callback = function()
-    vim.pack.add({ "https://github.com/nvim-mini/mini.hipatterns" })
-    local hipatterns = require("mini.hipatterns")
-    hipatterns.setup({
-      highlighters = {
-        fixme = { pattern = "FIXME", group = "MiniHipatternsFixme" },
-        hack = { pattern = "HACK", group = "MiniHipatternsHack" },
-        todo = { pattern = "TODO", group = "MiniHipatternsTodo" },
-        note = { pattern = "NOTE", group = "MiniHipatternsNote" },
-        bug = { pattern = "BUG", group = "MiniHipatternsFixme" },
-        hex_color = hipatterns.gen_highlighter.hex_color(),
-      },
-    })
-  end,
-})

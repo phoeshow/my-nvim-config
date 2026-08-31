@@ -1,0 +1,21 @@
+vim.api.nvim_create_autocmd("BufReadPre", {
+  once = true,
+  callback = function()
+    vim.pack.add({ "https://github.com/catgoose/nvim-colorizer.lua" })
+
+    require("colorizer").setup({
+      options = {
+        parsers = {
+          css = true,
+          css_fn = true,
+          tailwind = {
+            enable = true,
+            lsp = {
+              enable = true,
+            },
+          },
+        },
+      },
+    })
+  end,
+})
