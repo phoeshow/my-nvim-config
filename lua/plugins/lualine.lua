@@ -133,9 +133,9 @@ vim.api.nvim_create_autocmd("BufReadPost", {
       "diagnostics",
       sources = { "nvim_diagnostic" },
       symbols = {
-        error = " ",
-        warn = " ",
-        info = " ",
+        error = " ",
+        warn = " ",
+        info = " ",
         hint = "󰌵 ",
       },
       diagnostics_color = {
