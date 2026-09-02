@@ -20,6 +20,8 @@ require("catppuccin").setup({
       MiniTablineModifiedVisible = { fg = colors.maroon, bg = colors.none },
       MiniTablineTabpagesection = { fg = colors.surface1, bg = colors.base },
       MiniTablineVisible = { fg = colors.subtext1, bg = colors.base },
+      -- NvimTree
+      NvimTreeGitStagedIcon = { fg = colors.green },
     }
   end,
   integrations = {
@@ -28,7 +30,6 @@ require("catppuccin").setup({
     diffview = true,
     mini = {
       enabled = true,
-      indentscope_color = "peach",
     },
     snacks = {
       enabled = true,

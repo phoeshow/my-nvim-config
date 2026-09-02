@@ -2,6 +2,7 @@ require("plugins.catppuccin")
 require("plugins.snacks")
 require("plugins.lualine")
 require("plugins.mini")
+require("plugins.nvim-tree")
 require("plugins.flash")
 require("plugins.grug-far")
 
