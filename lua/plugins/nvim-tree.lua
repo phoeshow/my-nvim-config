@@ -15,19 +15,11 @@ local function my_on_attach(bufnr)
   -- replace show help map
   vim.keymap.del("n", "g?", { buf = bufnr })
   vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
-  -- replace show hidden files
-  vim.keymap.set("n", ".", api.filter.dotfiles.toggle, opts("Toggle hidden files"))
   -- replace split open
   vim.keymap.del("n", "<C-x>", { buf = bufnr })
-  vim.keymap.del("n", "<C-v>", { buf = bufnr })
-  vim.keymap.set("n", "s", api.node.open.vertical, opts("Open: Vertical Split"))
+  vim.keymap.set("n", "<C-s>", api.node.open.horizontal, opts("Open: Vertical Split"))
   -- remove open in new tab
   vim.keymap.del("n", "<C-t>", { buf = bufnr })
-  -- remap copy file
-  vim.keymap.set("n", "y", api.fs.copy.node, opts("Copy"))
-  -- remap create file
-  vim.keymap.del("n", "a", { buf = bufnr })
-  vim.keymap.set("n", "c", api.fs.create, opts("Create File Or Directory"))
 end
 
 nvimtree.setup({
@@ -48,13 +40,13 @@ nvimtree.setup({
     highlight_hidden = "name",
     highlight_modified = "name",
     icons = {
-      
       glyphs = {
         git = {
           untracked = "󰯫",
           unstaged = "󰰏",
           staged = "",
-          ignored = ""
+          ignored = "",
+          unmerged = "󰯱",
         },
       },
     },
@@ -67,3 +59,17 @@ nvimtree.setup({
 })
 
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = " Open File Explorer" })
+
+local prev = { new_name = "", old_name = "" } -- Prevents duplicate events
+vim.api.nvim_create_autocmd("User", {
+  pattern = "NvimTreeSetup",
+  callback = function()
+    local events = require("nvim-tree.api").events
+    events.subscribe(events.Event.NodeRenamed, function(data)
+      if prev.new_name ~= data.new_name or prev.old_name ~= data.old_name then
+        data = data
+        Snacks.rename.on_rename_file(data.old_name, data.new_name)
+      end
+    end)
+  end,
+})

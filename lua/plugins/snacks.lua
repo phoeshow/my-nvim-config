@@ -78,7 +78,9 @@ vim.api.nvim_create_autocmd("UIEnter", {
 })
 
 vim.keymap.set("n", "<leader>ff", function()
-  Snacks.picker.files()
+  Snacks.picker.files({
+    exclude = { "node_modules" },
+  })
 end, { desc = "Find Files" })
 vim.keymap.set("n", "<leader>fg", function()
   Snacks.picker.grep()

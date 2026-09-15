@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
     })
     require("todo-comments").setup({})
     vim.keymap.set("n", "<leader>ft", function()
-      Snacks.picker.todo_comments()
+      vim.cmd("TodoQuickFix")
     end, { desc = "Find Todo" })
   end,
 })
